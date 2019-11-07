@@ -6,7 +6,25 @@ root.geometry('600x600')
 
 numbers=Listbox(root, width=40, height=50, selectmode=SINGLE)
 
-# def change_contact():
+def change_contact():
+    a=pole_name.get()
+    b=pole_surname.get()
+    c=pole_number.get()
+
+    index=numbers.curselection()[0]
+    
+    if a=="" or b=="" or c=="":
+        change=label_no_text.config(text='Все поля должны быть заполнены!',fg='red')
+
+    else:
+        numbers.delete(index)
+        new_info=a+' '+c+' - '+b
+        numbers.insert(index,new_info)
+
+    pole_name.delete(0,len(a))
+    pole_surname.delete(0,len(b))
+    pole_number.delete(0,len(c))
+
 
 
 def delete_contact():
@@ -33,7 +51,7 @@ def add_contact():
 
 add_button =Button(root, text='Добавить контакт',background='green',command=add_contact)
 del_button =Button(root, text='Удалить контакт', background='red', command=delete_contact)
-edit_button =Button(root, text='Изменить контакт', background='orange')
+edit_button =Button(root, text='Изменить контакт', background='orange', command=change_contact)
 
 
 
