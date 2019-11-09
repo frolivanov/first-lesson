@@ -1,4 +1,5 @@
 from tkinter import *
+import csv
 root=Tk()
 root.title('Книжиенция попытка 2')
 root.geometry('600x600')
