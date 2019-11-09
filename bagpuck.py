@@ -17,4 +17,4 @@ if gyro in da:
 mini = ["bottle", "scrap"]
 bagpack.insert (3, mini)
 #print (bagpack)
-random.choise (bagpack)
+random.choice (bagpack)
