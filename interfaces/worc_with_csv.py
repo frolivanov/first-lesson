@@ -8,7 +8,7 @@ users = [
     ['bob',34]
 ]
 
-with open(FILENAME,'w',newline='') as file:
+with open(FILENAME,'w',newline='',) as file:
     writer = csv.writer(file)
     writer.writerows(users)
 

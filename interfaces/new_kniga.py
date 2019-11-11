@@ -6,6 +6,8 @@ root.geometry('600x600')
 
 
 numbers=Listbox(root, width=40, height=50, selectmode=SINGLE)
+filename='0000.csv'
+
 
 def change_contact():
     a=pole_name.get()
@@ -19,7 +21,7 @@ def change_contact():
 
     else:
         numbers.delete(index)
-        new_info=a+' '+c+' - '+b
+        new_info= a +' '+c +' - '+b
         numbers.insert(index,new_info)
 
     pole_name.delete(0,len(a))
@@ -41,8 +43,17 @@ def add_contact():
         change=label_no_text.config(text='Все поля должны быть заполнены!',fg='red')
 
     else:
-        info_for_list=a+' '+c+' - '+b
+        info_for_list=a+" "+c+" - "+b
         numbers.insert(0,info_for_list)
+        
+        listforcsv = []
+        listforcsv.insert(0,info_for_list)
+        
+        with open(filename, "a",newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(listforcsv)
+
+
 
     pole_name.delete(0,len(a))
     pole_surname.delete(0,len(b))
