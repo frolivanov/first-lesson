@@ -1,5 +1,6 @@
 from tkinter import *
 import pandas as pd
+from tkinter import filedialog as fd
 root=Tk()
 root.title('Книжиенция попытка 2')
 root.geometry('800x600')
@@ -9,7 +10,22 @@ surnames = []
 phones = []
 mails = []
 
+img = PhotoImage(file = 'C:/Users/Ученик/Desktop/ledyaev ivan/interfaces/a.png')
+
 numbers=Listbox(root, width=40, height=40, selectmode=SINGLE)
+
+
+def isert_photo():
+    file_name = fd.askopenfilename()
+    f = open(file_name)
+    s = f.read()
+    a = s
+    f.close()
+
+# def extract_Photo():
+#     file_name = fd.asksavefilename(filetypes=(('JPEG files','.jpeg'),('PNG files','.png'),('GIF files', '.gif') ))
+#     f
+
 
 def check():
     print(names)
@@ -23,7 +39,7 @@ def okno():
     else:
         win = Toplevel(root, relief = SUNKEN)
         win.title('Информация о контакте')
-        win.geometry ('320x100')
+        win.geometry ('320x125')
         win.resizable(False, False)
         win.grab_set()
         win.focus_set()
@@ -34,11 +50,12 @@ def okno():
         window_surname = Label(win, text = 'Фамилия: ')
         window_number = Label(win, text = 'Номер: ')
         window_mail = Label(win, text = 'Почта: ')
-        window_photo = Label(win, text = 'ы')
+        window_photo = Button(win, image = img, width = 60, height = 60)
         ent_name = Label (win, text = names[index])
         ent_surname = Label(win, text = surnames[index])
         ent_number = Label(win, text = phones[index])
         ent_mail = Label(win, text = mails[index])
+        label_pusto = Label(win, text = ' ',width = 20)
 
         window_name.grid(row = 0, column = 0)
         window_surname.grid(row = 1, column = 0)
@@ -48,6 +65,9 @@ def okno():
         ent_surname.grid(row = 1, column = 1)
         ent_number.grid(row = 2, column = 1)
         ent_mail.grid(row = 3, column = 1)
+        label_pusto.grid(row =4, column = 1, columnspan=6,rowspan = 6)
+        window_photo.grid(row= 1, column = 7)
+
 
     # ent_name.insert(0,names[index])
     # ent_surname.insert(0,surnames[index])
